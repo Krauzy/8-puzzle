@@ -123,11 +123,11 @@ namespace Puzzle8
             Tree.stack.Push(root);
             bool flag = false;
             Tree temp = null;
-            while(Tree.stack.Count > 0 && !flag)
+            while (Tree.stack.Count > 0 && !flag)
             {
-                //Tree.stack = FitStack(Tree.stack);
+                Tree.stack = FitStack(Tree.stack);
                 Tree t = Tree.stack.Pop();
-                //ShowStack(Tree.stack);
+                ShowStack(Tree.stack);
                 flag = Puzzle.isEquals(t.Node, Tree.goals);
                 if (flag)
                     temp = t;
