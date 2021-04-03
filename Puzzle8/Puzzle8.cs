@@ -35,20 +35,25 @@ namespace Puzzle8
                 return string.Empty;
         }
 
+        private void build(Puzzle aux)
+        {
+            n1.Text = GetValue(aux.Puzzle8[0][0].Value);
+            n2.Text = GetValue(aux.Puzzle8[0][1].Value);
+            n3.Text = GetValue(aux.Puzzle8[0][2].Value);
+
+            n4.Text = GetValue(aux.Puzzle8[1][0].Value);
+            n5.Text = GetValue(aux.Puzzle8[1][1].Value);
+            n6.Text = GetValue(aux.Puzzle8[1][2].Value);
+
+            n7.Text = GetValue(aux.Puzzle8[2][0].Value);
+            n8.Text = GetValue(aux.Puzzle8[2][1].Value);
+            n9.Text = GetValue(aux.Puzzle8[2][2].Value);
+        }
+
         private void shuffle_Click(object sender, EventArgs e)
         {
             this.p = Puzzle.Shuffle(this.p);
-            n1.Text = GetValue(p.Puzzle8[0][0].Value);
-            n2.Text = GetValue(p.Puzzle8[0][1].Value);
-            n3.Text = GetValue(p.Puzzle8[0][2].Value);
-
-            n4.Text = GetValue(p.Puzzle8[1][0].Value);
-            n5.Text = GetValue(p.Puzzle8[1][1].Value);
-            n6.Text = GetValue(p.Puzzle8[1][2].Value);
-
-            n7.Text = GetValue(p.Puzzle8[2][0].Value);
-            n8.Text = GetValue(p.Puzzle8[2][1].Value);
-            n9.Text = GetValue(p.Puzzle8[2][2].Value);
+            build(this.p);
         }
 
         private void change_option()
@@ -79,10 +84,58 @@ namespace Puzzle8
             }
         }
 
+        private Stack<Tree> FitStack(Stack<Tree> stack)
+        {
+            if (stack.Count > 1)
+            {
+                int min = 10000;
+                List<Tree> l = new List<Tree>();
+                int lenght = stack.Count;
+                for(int i = 0; i < lenght; i++)
+                {
+                    Tree t = stack.Pop();
+                    if (t.H < min)
+                        min = t.H;
+                    l.Add(t);
+                }
+                stack.Clear();
+                for(int i = l.Count - 1; i >= 0; i--)
+                {
+                    if (l[i].H == min)
+                        stack.Push(l[i]);
+                }
+            }
+            return stack;
+        }
+
+        private void ShowStack(Stack<Tree> stack)
+        {
+            Stack<Tree> temp = stack;
+            while (temp.Count > 0)
+                Console.Write(temp.Pop().H + " ");
+            Console.WriteLine();
+        }
+
         private void resolve_Click(object sender, EventArgs e)
         {
             Tree.goals = new Puzzle();
-            root = new Tree(this.p);
+            root = new Tree(this.p, Puzzle.NONE);
+            Tree.stack.Push(root);
+            bool flag = false;
+            Tree temp = null;
+            while(Tree.stack.Count > 0 && !flag)
+            {
+                //Tree.stack = FitStack(Tree.stack);
+                Tree t = Tree.stack.Pop();
+                //ShowStack(Tree.stack);
+                flag = Puzzle.isEquals(t.Node, Tree.goals);
+                if (flag)
+                    temp = t;
+                else
+                    t.CastChildren();                
+            }
+            build(temp.Node);
+            Steps.Text = temp.Step.ToString();
         }
 
         private void depth_Click(object sender, EventArgs e)

@@ -13,6 +13,7 @@ namespace Puzzle8
         public const char DOWN = 'D';
         public const char RIGHT = 'R';
         public const char LEFT = 'L';
+        public const char NONE = 'X';
 
         private List<List<Box>> puzzle8;
         private List<char> moves;
@@ -140,9 +141,82 @@ namespace Puzzle8
             return p;
         }
 
+        public static char InvertOperation(char op)
+        {
+            if (op == DOWN)
+                return UP;
+            if (op == UP)
+                return DOWN;
+            if (op == LEFT)
+                return RIGHT;
+            if (op == RIGHT)
+                return LEFT;
+            return NONE;
+        }
+
+        public static bool isEquals(Puzzle A, Puzzle B)
+        {
+            bool result = true;
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (A.Puzzle8[i][j].Value != B.Puzzle8[i][j].Value)
+                        result = false;
+                }
+            }
+            return result;
+        }
+
+        public static int Misplaced(Puzzle A, Puzzle B)
+        {
+            int mis = 0;
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (A.Puzzle8[i][j].Value != B.Puzzle8[i][j].Value)
+                        mis++;
+                }
+            }
+            return mis - 1;
+        }
+
+        public static Point Get(Puzzle P, int value)
+        {
+            for (int x = 0; x < 3; x++)
+            {
+                for (int y = 0; y < 3; y++)
+                {
+                    if (P.puzzle8[x][y].Value == value)
+                        return new Point(x, y); 
+                }
+            }
+            return new Point();
+        }
+
+        public static int Manhattan(Puzzle A, Puzzle B)
+        {
+            int m = 0;
+            for (int x = 0; x < 3; x++)
+            {
+                for (int y = 0; y < 3; y++)
+                {
+                    if(A.puzzle8[x][y].Value != 0)
+                    {
+                        Point Src = new Point(x, y);
+                        Point Dest = Get(B, A.puzzle8[x][y].Value);
+                        m += Math.Abs(Src.X - Dest.X) + Math.Abs(Src.Y - Dest.Y);
+                    }                    
+                }
+            }
+            return m;
+        }
+
         public void Show()
         {
-            foreach(List<Box> x in this.puzzle8)
+            Console.WriteLine();
+            foreach (List<Box> x in this.puzzle8)
             {
                 foreach(Box y in x)
                 {

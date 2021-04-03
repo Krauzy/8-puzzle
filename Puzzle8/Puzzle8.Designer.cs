@@ -43,15 +43,15 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.n4 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.n9 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.n8 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.n7 = new System.Windows.Forms.Label();
-            this.n9 = new System.Windows.Forms.Label();
             this.depth = new System.Windows.Forms.Button();
             this.breadth = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.steps = new System.Windows.Forms.Label();
+            this.Steps = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -225,6 +225,16 @@
             this.panel7.Size = new System.Drawing.Size(110, 110);
             this.panel7.TabIndex = 6;
             // 
+            // n9
+            // 
+            this.n9.AutoSize = true;
+            this.n9.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.n9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.n9.Location = new System.Drawing.Point(19, 12);
+            this.n9.Name = "n9";
+            this.n9.Size = new System.Drawing.Size(0, 86);
+            this.n9.TabIndex = 6;
+            // 
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
@@ -265,16 +275,6 @@
             this.n7.TabIndex = 1;
             this.n7.Text = "7";
             // 
-            // n9
-            // 
-            this.n9.AutoSize = true;
-            this.n9.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.n9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.n9.Location = new System.Drawing.Point(19, 12);
-            this.n9.Name = "n9";
-            this.n9.Size = new System.Drawing.Size(0, 86);
-            this.n9.TabIndex = 6;
-            // 
             // depth
             // 
             this.depth.BackColor = System.Drawing.Color.SlateBlue;
@@ -310,22 +310,22 @@
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.SlateBlue;
-            this.panel10.Controls.Add(this.steps);
+            this.panel10.Controls.Add(this.Steps);
             this.panel10.Location = new System.Drawing.Point(377, 376);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(30, 34);
             this.panel10.TabIndex = 9;
             // 
-            // steps
+            // Steps
             // 
-            this.steps.AutoSize = true;
-            this.steps.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.steps.ForeColor = System.Drawing.Color.White;
-            this.steps.Location = new System.Drawing.Point(6, 7);
-            this.steps.Name = "steps";
-            this.steps.Size = new System.Drawing.Size(18, 20);
-            this.steps.TabIndex = 6;
-            this.steps.Text = "0";
+            this.Steps.AutoSize = true;
+            this.Steps.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Steps.ForeColor = System.Drawing.Color.White;
+            this.Steps.Location = new System.Drawing.Point(6, 7);
+            this.Steps.Name = "Steps";
+            this.Steps.Size = new System.Drawing.Size(18, 20);
+            this.Steps.TabIndex = 6;
+            this.Steps.Text = "0";
             // 
             // screen_puzzle8
             // 
@@ -400,7 +400,7 @@
         private System.Windows.Forms.Button depth;
         private System.Windows.Forms.Button breadth;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Label steps;
+        private System.Windows.Forms.Label Steps;
     }
 }
 

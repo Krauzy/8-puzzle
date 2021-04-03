@@ -8,3 +8,13 @@ C:\Users\Trbry\Documents\Puzzle8\Puzzle8\obj\Debug\Puzzle8.csproj.CoreCompileInp
 C:\Users\Trbry\Documents\Puzzle8\Puzzle8\obj\Debug\Puzzle8.exe
 C:\Users\Trbry\Documents\Puzzle8\Puzzle8\obj\Debug\Puzzle8.pdb
 C:\Users\Trbry\Documents\Puzzle8\Puzzle8\obj\Debug\Puzzle8.screen_puzzle8.resources
+C:\Users\Trbry\Documents\GitHub\puzzle8\Puzzle8\bin\Debug\Puzzle8.exe.config
+C:\Users\Trbry\Documents\GitHub\puzzle8\Puzzle8\bin\Debug\Puzzle8.exe
+C:\Users\Trbry\Documents\GitHub\puzzle8\Puzzle8\bin\Debug\Puzzle8.pdb
+C:\Users\Trbry\Documents\GitHub\puzzle8\Puzzle8\obj\Debug\Puzzle8.csprojAssemblyReference.cache
+C:\Users\Trbry\Documents\GitHub\puzzle8\Puzzle8\obj\Debug\Puzzle8.screen_puzzle8.resources
+C:\Users\Trbry\Documents\GitHub\puzzle8\Puzzle8\obj\Debug\Puzzle8.Properties.Resources.resources
+C:\Users\Trbry\Documents\GitHub\puzzle8\Puzzle8\obj\Debug\Puzzle8.csproj.GenerateResource.cache
+C:\Users\Trbry\Documents\GitHub\puzzle8\Puzzle8\obj\Debug\Puzzle8.csproj.CoreCompileInputs.cache
+C:\Users\Trbry\Documents\GitHub\puzzle8\Puzzle8\obj\Debug\Puzzle8.exe
+C:\Users\Trbry\Documents\GitHub\puzzle8\Puzzle8\obj\Debug\Puzzle8.pdb
