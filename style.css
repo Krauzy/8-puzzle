@@ -1,0 +1,57 @@
+#center-container {
+    margin: auto;
+    padding: 15px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-box {
+    border-radius: 8px;
+    background-color: #f63366;
+    margin: 15px;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+span {
+    font-size: 70px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#little-center-container {
+    margin: auto;
+    padding: 4px;
+}
+
+.little-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.little-grid-box {
+    border-radius: 8px;
+    background-color: #f63366;
+    margin: 4px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.little-span {
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
