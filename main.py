@@ -12,10 +12,10 @@ def build():
     st.sidebar.markdown('---')
     rd = st.sidebar.radio(label='Searchs', options=['Breadth-First Search (BFS)', 'Depth-First Search (DFS)'])
     st.sidebar.markdown('---')
-    side1, side2, side3 = st.sidebar.beta_columns([0.1, 1, 1])
+    side1, side2 = st.sidebar.beta_columns([0.2, 1])
     flag = False
     puzzle = shuffle([1, 2, 3, 4, 5, 6, 7, 8, 0])
-    if side3.button('SOLVE'):
+    if side2.button('SHUFFLE AND SOLVE'):
         if rd == 'Breadth-First Search (BFS)':
             size, steps = solve(puzzle, 'BFS')
         else:
