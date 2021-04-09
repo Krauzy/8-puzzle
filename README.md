@@ -28,14 +28,14 @@ Go through the ``child nodes`` by ``depth level``, until you find the first occu
 ## Install
 Install streamlit package to host the server
 
-```sh
+```shell
  pip install streamlit
 ```
 *Warning: Streamlit is a web framework that hosts the own server, so using jupyter is not viable due to conflicts with servers*
 
 ## Inicialization
 Run main.py using the streamlit hook
-```sh
+```shell
  streamlit run main.py
 ```
 
