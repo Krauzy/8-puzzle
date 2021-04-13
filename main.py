@@ -17,16 +17,16 @@ def build():
     puzzle = shuffle([1, 2, 3, 4, 5, 6, 7, 8, 0])
     if side2.button('SHUFFLE AND SOLVE'):
         if rd == 'Breadth-First Search (BFS)':
-            size, steps = solve(puzzle, 'BFS')
+            size, steps, time = solve(puzzle, 'BFS')
         else:
-            size, steps = solve(puzzle)
+            size, steps, time = solve(puzzle)
         st.markdown(get_main(puzzle), unsafe_allow_html=True)
         flag = True
 
     if flag == False:
         st.markdown(get_main([1, 2, 3, 4, 5, 6, 7, 8, 0]), unsafe_allow_html=True)
     else:
-        build_step(steps, size)
+        build_step(steps, size, time, last=(rd == 'Depth-First Search (DFS)'))
 
 
 def get_main(arr=[]):
@@ -47,12 +47,18 @@ def get_step(array=[]):
             array[i] = str(array[i])
     return "<div id='little-center-container'><div class='little-row' style='margin-top: 0px !important;'><div class='little-grid-box' ><span class='little-span'>" + array[0] + "</span></div><div class='little-grid-box' ><span class='little-span'>" + array[1] + "</span></div><div class='little-grid-box' ><span class='little-span'>" + array[2] + "</span></div></div><div class='little-row'><div class='little-grid-box' ><span class='little-span'>" + array[3] + "</span></div><div class='little-grid-box' ><span class='little-span'>" + array[4] + "</span></div><div class='little-grid-box' ><span class='little-span'>" + array[5] + "</span></div></div><div class='little-row'><div class='little-grid-box' ><span class='little-span'>" + array[6] + "</span></div><div class='little-grid-box' ><span class='little-span'>" + array[7] + "</span></div><div class='little-grid-box' ><span class='little-span'>" + array[8] + "</span></div></div></div>"
 
-def build_step(moves=[], size=0):
-    st.markdown('---')
+def build_step(moves=[], size=0, time=0, last=False):
+    st.markdown('---')    
+    x0, x1, x2, x3 = st.beta_columns([0.4, 1, 1, 1])
+    x2.write('TIME: ' + str(time) + 's')
     s0, s1, s2, s3 = st.beta_columns([0.4, 1, 1, 1])
     s2.write('STEPS: ' + str(size))
-    for m in moves[::-1]:
+    if last == False:
+        for m in moves[::-1]:
+            st.write('')
+            st.markdown(get_step(m), unsafe_allow_html=True)
+    else:
         st.write('')
-        st.markdown(get_step(m), unsafe_allow_html=True)
+        st.markdown(get_step(moves[0]), unsafe_allow_html=True)
 
 build()

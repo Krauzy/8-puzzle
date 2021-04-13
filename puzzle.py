@@ -1,5 +1,7 @@
 from collections import deque
 from random import seed, randint
+import time
+import timeit
 
 seed(1)
 
@@ -49,10 +51,66 @@ def get_children(node):
     return sub
 
 
+def get_XY(value):
+    if value == 0:
+        return (0, 0)
+    elif value == 1:
+        return (1, 0)
+    elif value == 2:
+        return (2, 0)
+    elif value == 3:
+        return (1, 0)
+    elif value == 4:
+        return (1, 1)
+    elif value == 5:
+        return (1, 2)
+    elif value == 6:
+        return (2, 0)
+    elif value == 7:
+        return (2, 1)
+    elif value == 8:
+        return (2, 2)
+
+
+def manhattan(state):
+    res = 0
+    for i in range(8):
+        x1, y1 = get_XY(state.index(i + 1))
+        x2, y2 = get_XY(goals.index(i + 1))
+        res += abs(x1 - x2) + abs(y1 - y2)
+    return res
+
+
+def get_min(arr):
+    minus = 100
+    for item in arr:
+        if minus > manhattan(item.state):
+            minus = manhattan(item.state)
+    return minus
+
+
+def depth_first(state):
+    global target
+    olds = set()
+    stack = deque([Puzzle(state)]) # STACK
+
+    while stack:
+        node = stack.pop()
+        olds.add(node.map)
+        if node.state == goals:
+            return node
+        paths = get_children(node) #[::-1]
+        for path in paths:
+            if path.map not in olds:
+                stack.append(path)
+                olds.add(path.map)
+    return node
+
+
 def breadth_first(state):
     global target
     olds = set()
-    queue = deque([Puzzle(state)])
+    queue = deque([Puzzle(state)]) # QUEUE
 
     while queue:
         node = queue.popleft()
@@ -61,29 +119,13 @@ def breadth_first(state):
             return node
         paths = get_children(node)
         for path in paths:
-            if path.map not in olds:    # FIX
+            if path.map not in olds:
                 queue.append(path)
                 olds.add(path.map)
+    return node
 
 
-def depth_first(state):
-    global target
-    olds = set()
-    stack = list([Puzzle(state, None, None, 0)])
-
-    while stack:
-        node = stack.pop()
-        olds.add(node.map)
-        if node.state == goals:
-            return node
-        paths = reversed(get_children(node))
-        for path in paths:
-            if path.map not in olds:    # FIX
-                stack.append(path)
-                olds.add(path.map)
-
-
-def shuffle(state=[], n=50):
+def shuffle(state=[], n=100):
     temp = state[:]
     for i in range(n):
         x = switch(temp, randint(1, 4))
@@ -92,18 +134,19 @@ def shuffle(state=[], n=50):
     return temp
 
 
-
 def solve(init=[], method='DFS'):
+    start = timeit.default_timer()
     if method == 'DFS':
         target = depth_first(init)
     else:
         target = breadth_first(init)
-    
+    stop = timeit.default_timer()
+    time = stop - start
     moves = []
     while init != target.state:
         moves.append(target.state)
         target = target.parent
-    return (len(moves), moves)
+    return (len(moves), moves, format(time, '.4f'))
 
 
 def switch(state, where):
