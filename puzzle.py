@@ -99,7 +99,7 @@ def depth_first(state):
         olds.add(node.map)
         if node.state == goals:
             return node
-        paths = get_children(node) #[::-1]
+        paths = get_children(node)[::-1]  # INVERTER LISTA PARA INICIAR A BUSCA NA ESQUERDA
         for path in paths:
             if path.map not in olds:
                 stack.append(path)
