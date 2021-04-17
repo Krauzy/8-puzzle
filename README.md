@@ -34,7 +34,7 @@ Install streamlit package to host the server
 *Warning: Streamlit is a web framework that hosts the own server, so using jupyter is not viable due to conflicts with servers*
 
 ## Inicialization
-Run main.py using the streamlit hook
+Run ``main.py`` using the streamlit hook
 ```shell
  streamlit run main.py
 ```
